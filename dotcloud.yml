@@ -1,0 +1,5 @@
+amqp:
+  type: custom
+  buildscript: builder
+  ports: 
+    amqp: tcp

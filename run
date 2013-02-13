@@ -3,9 +3,10 @@
 export PATH=$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 
-#export RABBITMQ_NODE_PORT=$(cat environment.yml | sed 's/PORT_AMQP: *\([0-9]*\).*/\1/g')
-export RABBITMQ_NODE_PORT=$DOTCLOUD_AMQP_AMQP_PORT
+export RABBITMQ_NODE_PORT=$(cat environment.yml | sed -n 's/PORT_AMQP: *\([0-9]*\).*/\1/gp')
+#export RABBITMQ_NODE_PORT=$DOTCLOUD_AMQP_AMQP_PORT
+echo "RUN ON PORT $RABBITMQ_NODE_PORT"
 
-rabbitmq_server-3.0.2/sbin/rabbitmq-server
+exec rabbitmq_server-3.0.2/sbin/rabbitmq-server
 
 
